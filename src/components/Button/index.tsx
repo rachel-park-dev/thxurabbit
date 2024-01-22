@@ -1,5 +1,6 @@
-import React from 'react';
-import { css, SerializedStyles } from '@emotion/react';
+/** @jsxImportSource @emotion/react */
+import React from "react";
+import { css, SerializedStyles } from "@emotion/react";
 
 type ButtonProps = {
   css?: SerializedStyles;
@@ -11,9 +12,21 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-const Button = ({ children, width, color, onClick, className, disabled }: ButtonProps) => {
+const Button = ({
+  children,
+  width,
+  color,
+  onClick,
+  className,
+  disabled,
+}: ButtonProps) => {
   return (
-    <button css={buttonStyle(width, color)} onClick={onClick} className={className} disabled={disabled}>
+    <button
+      css={buttonStyle(width, color)}
+      onClick={onClick}
+      className={className}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
@@ -29,7 +42,7 @@ const buttonStyle = (width: string, color: string) => css`
   margin: 0 auto;
 
   color: #7a7a7a;
-  font-family: 'Galmuri9';
+  font-family: "Galmuri9";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
