@@ -1,0 +1,11 @@
+{
+  "createdAt": "2023-12-26 16:49:14",
+  "updatedAt": "2023-12-26 16:49:14",
+  "nameDescription": null,
+  "emailDescription": null,
+  "phoneNumberDescription": null,
+  "applicationPathDescription": null,
+  "applicationPathOptions": ["회사 홈페이지", "채용 포탈", "헤드헌터", "기타"],
+  "additionalQuestions": [],
+  "applicationFormId": "AHfTIQlpQ0"
+}

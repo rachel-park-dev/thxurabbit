@@ -1,0 +1,41 @@
+{
+  "name": "companybornmonsterfrontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "local": "vite --host 0.0.0.0",
+    "dev": "tsc && vite build --mode development",
+    "build": "tsc && vite build --mode production",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@hookform/resolvers": "^2.9.10",
+    "axios": "^1.1.3",
+    "dayjs": "^1.11.7",
+    "jwt-decode": "^3.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.3.5",
+    "react-hook-form": "^7.38.0",
+    "react-router-dom": "^6.4.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.7",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-slick": "^0.23.10",
+    "@vitejs/plugin-react": "^2.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "slick-carousel": "^1.8.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
