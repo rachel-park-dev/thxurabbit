@@ -1,16 +1,15 @@
-/** @jsxImportSource @emotion/react */
-import React, { useState, useEffect } from 'react';
-import close from '@/assets/icon/ico_close.svg';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import UserService from '@/services/user-service';
-import Layout from '@/components/Layout';
-import * as styles from './style';
-import Button from '@/components/Button';
-import { useNavigate } from 'react-router-dom';
-import Popup from '@/components/Popup';
-import { AxiosError } from 'axios';
+import React, { useState, useEffect } from "react";
+import close from "@/assets/icon/ico_close.svg";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import UserService from "@/services/user-service";
+import Layout from "@/components/Layout";
+import * as styles from "./style";
+import Button from "@/components/Button";
+import { useNavigate } from "react-router-dom";
+import Popup from "@/components/Popup";
+import { AxiosError } from "axios";
 
 type FormData = {
   username: string;
@@ -22,23 +21,27 @@ const schema = yup
   .object({
     username: yup
       .string()
-      .min(2, '2글자 이상 입력해 주세요!')
-      .max(12, '12글자 이하로 입력해 주세요!')
-      .matches(/^[가-힣a-zA-Z0-9]*$/, '특수문자와 공백은 사용이 불가능해요!')
+      .min(2, "2글자 이상 입력해 주세요!")
+      .max(12, "12글자 이하로 입력해 주세요!")
+      .matches(/^[가-힣a-zA-Z0-9]*$/, "특수문자와 공백은 사용이 불가능해요!")
       .required(),
     password: yup
       .string()
       .max(4)
       .matches(/^[0-9]+$/)
       .required(),
-    confirm_password: yup.string().oneOf([yup.ref('password'), null]),
+    confirm_password: yup.string().oneOf([yup.ref("password"), null]),
   })
   .required();
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const [inputValue, setInputValue] = useState({ username: '', password: '', confirmPassword: '' });
+  const [inputValue, setInputValue] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPassordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
@@ -57,7 +60,7 @@ const Register = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
-    reValidateMode: 'onChange',
+    reValidateMode: "onChange",
   });
 
   useEffect(() => {
@@ -96,7 +99,11 @@ const Register = () => {
   }, [inputValue.confirmPassword, inputValue.password, confirmPasswordError]);
 
   useEffect(() => {
-    if (inputValue.username && inputValue.password && inputValue.confirmPassword) {
+    if (
+      inputValue.username &&
+      inputValue.password &&
+      inputValue.confirmPassword
+    ) {
       if (!usernameError && !passwordError && !confirmPasswordError) {
         setAllChecked(true);
       } else {
@@ -119,18 +126,18 @@ const Register = () => {
       if (typedError?.response?.status === 400) {
         setAlreadyPopup(true);
       }
-      resetField('username');
-      resetField('password');
-      resetField('confirm_password');
+      resetField("username");
+      resetField("password");
+      resetField("confirm_password");
       resetValidation();
     }
   });
 
   const resetValidation = () => {
     setInputValue({
-      username: '',
-      password: '',
-      confirmPassword: '',
+      username: "",
+      password: "",
+      confirmPassword: "",
     });
 
     setUsernameError(false);
@@ -149,17 +156,21 @@ const Register = () => {
         <br />
         잊어버리지 않게 잘 기록해주세요
       </p>
-      <div onClick={() => navigate(-1)} css={styles.closeBtn} style={{ cursor: 'pointer' }}>
-        <img src={close} alt='닫기' />
+      <div
+        onClick={() => navigate(-1)}
+        css={styles.closeBtn}
+        style={{ cursor: "pointer" }}
+      >
+        <img src={close} alt="닫기" />
       </div>
       <form css={styles.formStyle} onSubmit={onSubmit}>
         <h4 css={styles.subTitle}>닉네임</h4>
         <input
-          type='text'
-          placeholder='친구들이 보게 되는 이름입니다'
+          type="text"
+          placeholder="친구들이 보게 되는 이름입니다"
           css={styles.inputUserNameStyle(usernameError)}
-          className={usernameError ? 'inputError' : ''}
-          {...register('username', {
+          className={usernameError ? "inputError" : ""}
+          {...register("username", {
             onChange: (e) => {
               setInputValue({
                 ...inputValue,
@@ -171,17 +182,25 @@ const Register = () => {
         {inputValue.username && inputValue.username.length < 2 && (
           <p css={styles.inputValueError}>2글자 이상 입력해 주세요!</p>
         )}
-        {inputValue.username.length > 12 && <p css={styles.inputValueError}>12글자 이하로 입력해 주세요!</p>}
-        {inputValue.username.match(pattern) && <p css={styles.inputValueError}>띄어쓰기는 할 수 없어요!</p>}
-        {inputValue.username.match(regExp) && <p css={styles.inputValueError}>특수문자는 사용이 불가능해요!</p>}
-        {inputValue.username && !usernameError && <p css={styles.ok}>사용 가능한 닉네임 입니다!</p>}
+        {inputValue.username.length > 12 && (
+          <p css={styles.inputValueError}>12글자 이하로 입력해 주세요!</p>
+        )}
+        {inputValue.username.match(pattern) && (
+          <p css={styles.inputValueError}>띄어쓰기는 할 수 없어요!</p>
+        )}
+        {inputValue.username.match(regExp) && (
+          <p css={styles.inputValueError}>특수문자는 사용이 불가능해요!</p>
+        )}
+        {inputValue.username && !usernameError && (
+          <p css={styles.ok}>사용 가능한 닉네임 입니다!</p>
+        )}
         <h4 css={styles.subTitle}>비밀번호 입력</h4>
         <input
-          type='password'
-          placeholder='숫자 4자리 비밀번호를 입력해 주세요'
+          type="password"
+          placeholder="숫자 4자리 비밀번호를 입력해 주세요"
           css={styles.inputPwdStyle(passwordError)}
-          className={passwordError ? 'inputError' : ''}
-          {...register('password', {
+          className={passwordError ? "inputError" : ""}
+          {...register("password", {
             onChange: (e) => {
               setInputValue({
                 ...inputValue,
@@ -196,17 +215,17 @@ const Register = () => {
           ) : !inputValue.password.match(pwd) ? (
             <p css={styles.inputValueError}>숫자 4자리를 입력해 주세요!</p>
           ) : (
-            ''
+            ""
           )
         ) : null}
         {inputValue.password && !passwordError && <p css={styles.ok}></p>}
         <h4 css={styles.subTitle}>비밀번호 확인</h4>
         <input
-          type='password'
-          placeholder='비밀번호를 확인해 주세요'
+          type="password"
+          placeholder="비밀번호를 확인해 주세요"
           css={styles.inputPwdConfirmStyle(confirmPasswordError)}
-          className={confirmPasswordError ? 'inputError' : ''}
-          {...register('confirm_password', {
+          className={confirmPasswordError ? "inputError" : ""}
+          {...register("confirm_password", {
             onChange: (e) => {
               setInputValue({
                 ...inputValue,
@@ -215,16 +234,30 @@ const Register = () => {
             },
           })}
         />
-        {inputValue.confirmPassword && !inputValue.confirmPassword.match(inputValue.password) && (
-          <p css={styles.inputValueError}>비밀번호가 달라요!</p>
+        {inputValue.confirmPassword &&
+          !inputValue.confirmPassword.match(inputValue.password) && (
+            <p css={styles.inputValueError}>비밀번호가 달라요!</p>
+          )}
+        {inputValue.confirmPassword && !confirmPasswordError && (
+          <p css={styles.ok}></p>
         )}
-        {inputValue.confirmPassword && !confirmPasswordError && <p css={styles.ok}></p>}
-        <Button width='328px' color='#dadada' className={allChecked ? 'registerBtnStyle active' : 'registerBtnStyle'}>
+        <Button
+          width="328px"
+          color="#dadada"
+          className={
+            allChecked ? "registerBtnStyle active" : "registerBtnStyle"
+          }
+        >
           회원가입 하기
         </Button>
       </form>
       {openPopup && (
-        <Popup width='296px' className='goToLogin' buttonCancel='로그인 하기' onCancel={() => navigate('/login')}>
+        <Popup
+          width="296px"
+          className="goToLogin"
+          buttonCancel="로그인 하기"
+          onCancel={() => navigate("/login")}
+        >
           가입을 완료했어!
           <br />
           바로 로그인해볼까? (깡총)
@@ -232,16 +265,16 @@ const Register = () => {
       )}
       {alreadyPopup && (
         <Popup
-          width='296px'
-          className='alreadyExist'
-          buttonCancel='로그인 하기'
-          buttonConfirm='확인'
-          onCancel={() => navigate('/login')}
+          width="296px"
+          className="alreadyExist"
+          buttonCancel="로그인 하기"
+          buttonConfirm="확인"
+          onCancel={() => navigate("/login")}
           onConfirm={() => {
             setAlreadyPopup(false);
-            resetField('username');
-            resetField('password');
-            resetField('confirm_password');
+            resetField("username");
+            resetField("password");
+            resetField("confirm_password");
             resetValidation();
           }}
         >

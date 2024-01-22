@@ -1,19 +1,18 @@
-/** @jsxImportSource @emotion/react */
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppState } from '@/contexts/Context';
-import axios from 'axios';
-import UserService, { User } from '@/services/user-service';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppState } from "@/contexts/Context";
+import axios from "axios";
+import UserService, { User } from "@/services/user-service";
 
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import * as styles from './style';
-import Layout from '@/components/Layout';
-import Button from '@/components/Button';
-import BubbleRabbit from '@/assets/images/bubbleRabbit.png';
-import back from '@/assets/icon/ico_back.svg';
+import * as styles from "./style";
+import Layout from "@/components/Layout";
+import Button from "@/components/Button";
+import BubbleRabbit from "@/assets/images/bubbleRabbit.png";
+import back from "@/assets/icon/ico_back.svg";
 
 const schema = yup
   .object({
@@ -64,14 +63,16 @@ const Login = () => {
     UserService.login(data)
       .then((res) => {
         const accessToken = res.token.access;
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        dispatch({ type: 'SET_TOKEN', token: accessToken });
-        sessionStorage.setItem('tt', accessToken);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        dispatch({ type: "SET_TOKEN", token: accessToken });
+        sessionStorage.setItem("tt", accessToken);
 
         if (state.signInWriteCard) {
           navigate(`/write/${state.receiverName}`);
         } else {
-          navigate('/check');
+          navigate("/check");
         }
       })
       .catch((err) => {
@@ -79,8 +80,8 @@ const Login = () => {
         setLoginError(true);
       })
       .finally(() => {
-        resetField('username');
-        resetField('password');
+        resetField("username");
+        resetField("password");
       });
   });
 
@@ -88,7 +89,7 @@ const Login = () => {
     <Layout>
       <div css={styles.statusBar} />
       <div onClick={() => navigate(-1)} css={styles.backButton}>
-        <img src={back} style={{ cursor: 'pointer' }} alt='뒤로가기' />
+        <img src={back} style={{ cursor: "pointer" }} alt="뒤로가기" />
       </div>
       <div css={styles.loginImageWrapper(BubbleRabbit)} />
       <h1 css={styles.loginTitle}>
@@ -97,28 +98,39 @@ const Login = () => {
         2022 감사 연말정산
       </h1>
       <form css={styles.loginForm} onSubmit={onSubmit}>
-        <input type='text' placeholder='닉네임을 입력해 주세요' css={styles.loginInput} {...register('username')} />
         <input
-          type='password'
-          placeholder='숫자 4자리 비밀번호를 입력해 주세요'
+          type="text"
+          placeholder="닉네임을 입력해 주세요"
           css={styles.loginInput}
-          {...register('password')}
+          {...register("username")}
         />
-        {loginError && <p css={styles.loginInputError}>닉네임 또는 비밀번호를 잘못 입력했습니다!</p>}
+        <input
+          type="password"
+          placeholder="숫자 4자리 비밀번호를 입력해 주세요"
+          css={styles.loginInput}
+          {...register("password")}
+        />
+        {loginError && (
+          <p css={styles.loginInputError}>
+            닉네임 또는 비밀번호를 잘못 입력했습니다!
+          </p>
+        )}
         {(errors.username || errors.password) && (
-          <p css={styles.loginInputError}>닉네임 또는 비밀번호를 잘못 입력했습니다!</p>
+          <p css={styles.loginInputError}>
+            닉네임 또는 비밀번호를 잘못 입력했습니다!
+          </p>
         )}
         <div css={styles.buttonWrapper}>
           <Button
-            width='328px'
-            color='#dadada'
-            className={activeButton ? 'active' : ''}
+            width="328px"
+            color="#dadada"
+            className={activeButton ? "active" : ""}
             disabled={loginError ? true : false}
           >
             로그인
           </Button>
-          <Link to='/register'>
-            <Button width='328px' color='#dadada' className='signup'>
+          <Link to="/register">
+            <Button width="328px" color="#dadada" className="signup">
               회원가입
             </Button>
           </Link>

@@ -1,8 +1,7 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-import React, { ReactHTMLElement } from 'react';
-import Button from '../Button';
+import { css } from "@emotion/react";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import React, { ReactHTMLElement } from "react";
+import Button from "../Button";
 
 type SectionProps = {
   sectionImage: string;
@@ -28,7 +27,12 @@ const Section = ({
         <br />
         <span>{sectionSubtitle}</span>
       </p>
-      <Button width='91%' color='#111111' onClick={sectionClick} css={sectionBtnStyle}>
+      <Button
+        width="91%"
+        color="#111111"
+        onClick={sectionClick}
+        css={sectionBtnStyle}
+      >
         {sectionBtnText}
       </Button>
     </div>

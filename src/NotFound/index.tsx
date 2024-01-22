@@ -1,19 +1,19 @@
-/** @jsxImportSource @emotion/react */
-
-import React from 'react';
-import { css } from '@emotion/react';
-import blackRabbit from '@/assets/images/blackRabbit.png';
+import React from "react";
+import { css } from "@emotion/react";
+import blackRabbit from "@/assets/images/blackRabbit.png";
 
 export const NotFound = () => {
   return (
     <div css={containerStyle}>
-      <img src={blackRabbit} alt='흑토끼' css={imgStyle} />
+      <img src={blackRabbit} alt="흑토끼" css={imgStyle} />
       <h1>404</h1>
       <p css={textStyle}>
         페이지가 존재하지 않습니다. <br />
         링크를 잘못 입력하셨거나, 페이지가 삭제/이동 되었을 수 있습니다.
         <br />
-        지속적인 오류가 발생할 경우 <span css={emailStyle}>besidermonster@gmail.com</span>&nbsp; 으로 연락하여 주세요.
+        지속적인 오류가 발생할 경우{" "}
+        <span css={emailStyle}>besidermonster@gmail.com</span>&nbsp; 으로
+        연락하여 주세요.
       </p>
     </div>
   );

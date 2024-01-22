@@ -1,8 +1,7 @@
-/** @jsxImportSource @emotion/react */
-import React, { ReactComponentElement, useState } from 'react';
-import { css, SerializedStyles } from '@emotion/react';
-import Button from '@/components/Button';
-import popupRabbit from '@/assets/images/popupRabbit.png';
+import React, { ReactComponentElement, useState } from "react";
+import { css, SerializedStyles } from "@emotion/react";
+import Button from "@/components/Button";
+import popupRabbit from "@/assets/images/popupRabbit.png";
 
 type PopupProps = {
   css?: SerializedStyles;
@@ -29,16 +28,26 @@ const Popup = ({
   return (
     <>
       <div css={popupStyle} onClick={onClick} className={className}>
-        <img css={popupRabbitImg} src={popupRabbit} alt='popupImage' />
+        <img css={popupRabbitImg} src={popupRabbit} alt="popupImage" />
         <p css={popupText}>{children}</p>
-        <div css={popupButton} className='buttonWrapper'>
+        <div css={popupButton} className="buttonWrapper">
           {buttonCancel && (
-            <Button width={width} color='#111111' onClick={onCancel} className='btnCancel'>
+            <Button
+              width={width}
+              color="#111111"
+              onClick={onCancel}
+              className="btnCancel"
+            >
               {buttonCancel}
             </Button>
           )}
           {buttonConfirm && (
-            <Button width={width} color='#ffffff' onClick={onConfirm} className='btnConfirm'>
+            <Button
+              width={width}
+              color="#ffffff"
+              onClick={onConfirm}
+              className="btnConfirm"
+            >
               {buttonConfirm}
             </Button>
           )}
@@ -81,6 +90,7 @@ const popupButton = css`
     color: white;
     cursor: pointer;
   }
+
   .btnConfirm {
     margin: 16px;
     color: #111;

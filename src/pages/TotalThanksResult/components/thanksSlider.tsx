@@ -1,25 +1,29 @@
-/** @jsxImportSource @emotion/react */
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { PostPropsType } from '..';
-import MessageService from '@/services/message-service';
-import Pagination from './Pagination';
-import { DefaultMessagePopup } from './DefaultMessagPopup';
-import { closeBtn, introWrap, modalContainer, ThanksMessagePopup } from './ThanksMessagePopup';
+import { PostPropsType } from "..";
+import MessageService from "@/services/message-service";
+import Pagination from "./Pagination";
+import { DefaultMessagePopup } from "./DefaultMessagPopup";
+import {
+  closeBtn,
+  introWrap,
+  modalContainer,
+  ThanksMessagePopup,
+} from "./ThanksMessagePopup";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-import closeLetterthanks from '@/assets/icon/result_category/close_letter_thanks.svg';
-import closeLetterlove from '@/assets/icon/result_category/close_letter_love.svg';
-import closeLetterhelp from '@/assets/icon/result_category/close_letter_help.svg';
-import closeLettercomfort from '@/assets/icon/result_category/close_letter_comfort.svg';
-import closeLettercheering from '@/assets/icon/result_category/close_letter_cheering.svg';
-import closeLetterrespect from '@/assets/icon/result_category/close_letter_respect.svg';
-import closeLetterexistence from '@/assets/icon/result_category/close_letter_existence.svg';
-import closeLetterjust from '@/assets/icon/result_category/close_letter_just.svg';
-import closeLetterRabbit from '@/assets/icon/result_category/close_letter_rabbit.svg';
-import closeLetterNaver from '@/assets/icon/result_category/close_letter_naver.svg';
+import closeLetterthanks from "@/assets/icon/result_category/close_letter_thanks.svg";
+import closeLetterlove from "@/assets/icon/result_category/close_letter_love.svg";
+import closeLetterhelp from "@/assets/icon/result_category/close_letter_help.svg";
+import closeLettercomfort from "@/assets/icon/result_category/close_letter_comfort.svg";
+import closeLettercheering from "@/assets/icon/result_category/close_letter_cheering.svg";
+import closeLetterrespect from "@/assets/icon/result_category/close_letter_respect.svg";
+import closeLetterexistence from "@/assets/icon/result_category/close_letter_existence.svg";
+import closeLetterjust from "@/assets/icon/result_category/close_letter_just.svg";
+import closeLetterRabbit from "@/assets/icon/result_category/close_letter_rabbit.svg";
+import closeLetterNaver from "@/assets/icon/result_category/close_letter_naver.svg";
 
 /* import openLetterthanks from '@/assets/icon/result_category/open_letter_thanks.svg';
 import openLetterlove from '@/assets/icon/result_category/open_letter_love.svg';
@@ -81,8 +85,8 @@ const ThanksSlider = () => {
   const [messageId, setMessageId] = useState(1);
   const [defaultMessage, setDefaultMessage] = useState(false);
 
-  const token = sessionStorage.getItem('tt');
-  const username = sessionStorage.getItem('name');
+  const token = sessionStorage.getItem("tt");
+  const username = sessionStorage.getItem("name");
 
   useEffect(() => {
     try {
@@ -105,25 +109,25 @@ const ThanksSlider = () => {
 
   const switchCloseImages = (img: string) => {
     switch (img) {
-      case 'thanks':
+      case "thanks":
         return `${closeLetterthanks}`;
-      case 'love':
+      case "love":
         return `${closeLetterlove}`;
-      case 'help':
+      case "help":
         return `${closeLetterhelp}`;
-      case 'comfort':
+      case "comfort":
         return `${closeLettercomfort}`;
-      case 'cheering':
+      case "cheering":
         return `${closeLettercheering}`;
-      case 'respect':
+      case "respect":
         return `${closeLetterrespect}`;
-      case 'existence':
+      case "existence":
         return `${closeLetterexistence}`;
-      case 'just':
+      case "just":
         return `${closeLetterjust}`;
-      case 'admin':
+      case "admin":
         return `${closeLetterRabbit}`;
-      case 'lotto':
+      case "lotto":
         return `${closeLetterNaver}`;
     }
   };
@@ -168,7 +172,7 @@ const ThanksSlider = () => {
             <React.Fragment key={index}>
               <GridItem
                 ref={itemRef}
-                className='topItem'
+                className="topItem"
                 onClick={() => {
                   setClicked(true);
                   setMessageId(page > 1 ? index + offset : index);
@@ -177,19 +181,19 @@ const ThanksSlider = () => {
               >
                 <img
                   src={
-                    post.type === 'admin'
+                    post.type === "admin"
                       ? closeLetterRabbit
-                      : post.type === 'lotto'
+                      : post.type === "lotto"
                       ? closeLetterNaver
                       : switchCloseImages(post.title)
                   }
                   alt={post.title}
                 />
-                <div className='title'>
+                <div className="title">
                   {!post.content &&
                     {
-                      admin: '흑토끼가\n전하는 메세지',
-                      lotto: '흑토끼가\n주는 선물',
+                      admin: "흑토끼가\n전하는 메세지",
+                      lotto: "흑토끼가\n주는 선물",
                     }[post.type]}
                   {post.content.substring(0, 5)}
                   <br />
@@ -207,7 +211,12 @@ const ThanksSlider = () => {
             </React.Fragment>
           ))}
         </GridContainer>
-        <Pagination total={posts.length} limit={limit} page={page} setPage={setPage} />
+        <Pagination
+          total={posts.length}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

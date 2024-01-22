@@ -1,6 +1,5 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React from 'react';
+import { css } from "@emotion/react";
+import React from "react";
 
 type LayoutProp = {
   children: React.ReactNode;
@@ -32,6 +31,7 @@ const container = css`
         font-size: 14px;
         line-height: 15px;
       }
+
       .btnConfirm {
         height: 40px;
         font-size: 14px;
@@ -45,9 +45,11 @@ const container = css`
     img {
       margin: 8px;
     }
+
     p {
       margin-bottom: 20px;
     }
+
     .buttonWrapper {
       display: flex;
       justify-content: space-around;
@@ -62,6 +64,7 @@ const container = css`
         line-height: 15px;
         border: 2px solid #111;
       }
+
       .btnConfirm {
         height: 40px;
         background-color: #111;

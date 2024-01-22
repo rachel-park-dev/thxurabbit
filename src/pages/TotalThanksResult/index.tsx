@@ -1,24 +1,23 @@
-/** @jsxImportSource @emotion/react */
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/contexts/Context';
-import UserService from '@/services/user-service';
-import { parsedToken } from '@/utils/utils';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "@/contexts/Context";
+import UserService from "@/services/user-service";
+import { parsedToken } from "@/utils/utils";
 
-import Layout from '@/components/Layout';
-import Header from '@/components/Header';
-import ThanksSlider from '@/pages/TotalThanksResult/components/thanksSlider';
-import DropDown from './components/DropDown';
+import Layout from "@/components/Layout";
+import Header from "@/components/Header";
+import ThanksSlider from "@/pages/TotalThanksResult/components/thanksSlider";
+import DropDown from "./components/DropDown";
 
-import * as styles from './style';
-import { checkResultPayment, checkResultRow } from '../CheckThanksResult/style';
+import * as styles from "./style";
+import { checkResultPayment, checkResultRow } from "../CheckThanksResult/style";
 
-import totalResultRabbit from '@/assets/images/totalResultRabbit.png';
-import totalResultRabbits from '@/assets/images/totalResultRabbits.png';
-import BubbleMessage from '@/components/BubbleMessage';
-import Coin from '@/assets/icon/ico_coin.svg';
-import MessageService from '@/services/message-service';
-import axios from 'axios';
+import totalResultRabbit from "@/assets/images/totalResultRabbit.png";
+import totalResultRabbits from "@/assets/images/totalResultRabbits.png";
+import BubbleMessage from "@/components/BubbleMessage";
+import Coin from "@/assets/icon/ico_coin.svg";
+import MessageService from "@/services/message-service";
+import axios from "axios";
 
 export type PostPropsType = {
   id: number;
@@ -44,17 +43,17 @@ const CheckThanksResult = () => {
   let category: string[] = [];
 
   const userData = parsedToken();
-  const token = sessionStorage.getItem('tt');
-  const username = sessionStorage.getItem('name');
+  const token = sessionStorage.getItem("tt");
+  const username = sessionStorage.getItem("name");
 
   useEffect(() => {
     if (!token) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [token]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_USER_DATA', userData: userData });
+    dispatch({ type: "SET_USER_DATA", userData: userData });
   }, []);
 
   useEffect(() => {
@@ -99,7 +98,7 @@ const CheckThanksResult = () => {
     <Layout>
       <Header />
       <div css={styles.titleWrap}>
-        <div className='titleSm'>흑토끼와 함께 하는</div>
+        <div className="titleSm">흑토끼와 함께 하는</div>
         <div>
           2202 감사 연말 정산
           <br />
@@ -110,16 +109,22 @@ const CheckThanksResult = () => {
         <div css={styles.checkResultWrap}>
           <div css={styles.checkResultTotal}>
             <div css={styles.totalThanksTitleWrap}>
-              <img src={Coin} alt='동전' css={styles.coinIcon} />
+              <img src={Coin} alt="동전" css={styles.coinIcon} />
               <p>감사징수</p>
             </div>
-            <p css={styles.checkResultTotalContents}>+{income ? income.toLocaleString('ko-KR') : 0}</p>
+            <p css={styles.checkResultTotalContents}>
+              +{income ? income.toLocaleString("ko-KR") : 0}
+            </p>
           </div>
         </div>
       </div>
       <div>
-        <img src={totalResultRabbit} css={styles.rabbitImg} alt='최종결과 이미지' />
-        <BubbleMessage style={{ marginTop: '16px' }}>
+        <img
+          src={totalResultRabbit}
+          css={styles.rabbitImg}
+          alt="최종결과 이미지"
+        />
+        <BubbleMessage style={{ marginTop: "16px" }}>
           올 한 해 많은 감사를 받았어
           <br />
           그만큼 다른 사람들에게
@@ -133,33 +138,41 @@ const CheckThanksResult = () => {
           <br />
         </BubbleMessage>
         <div css={styles.line} />
-        <div css={styles.thanksMessageWrap} style={{ paddingLeft: '16px' }}>
-          <div css={styles.subTitleWrap} className='resultPayment'>
-            <div className='titleSm'>감사 연말정산</div>
+        <div css={styles.thanksMessageWrap} style={{ paddingLeft: "16px" }}>
+          <div css={styles.subTitleWrap} className="resultPayment">
+            <div className="titleSm">감사 연말정산</div>
             종합 결과
           </div>
           <div css={checkResultRow}>
-            <div css={checkResultPayment} style={{ fontSize: '1em' }}>
+            <div css={checkResultPayment} style={{ fontSize: "1em" }}>
               지출
             </div>
-            <p css={checkResultPayment}>{outgo ? outgo.toLocaleString('ko-KR') : 0}원</p>
+            <p css={checkResultPayment}>
+              {outgo ? outgo.toLocaleString("ko-KR") : 0}원
+            </p>
           </div>
-          <div css={checkResultRow} style={{ marginBottom: '16px' }}>
-            <div css={checkResultPayment} style={{ fontSize: '1em' }}>
+          <div css={checkResultRow} style={{ marginBottom: "16px" }}>
+            <div css={checkResultPayment} style={{ fontSize: "1em" }}>
               소득
             </div>
-            <p css={checkResultPayment}>{income ? income.toLocaleString('ko-KR') : 0}원</p>
+            <p css={checkResultPayment}>
+              {income ? income.toLocaleString("ko-KR") : 0}원
+            </p>
           </div>
           <DropDown category={category} />
         </div>
-        <div css={styles.checkResultTotal} style={{ paddingLeft: '16px' }}>
+        <div css={styles.checkResultTotal} style={{ paddingLeft: "16px" }}>
           <p>정산금액</p>
-          <p css={styles.checkResultTotalContents}>{sum ? (sum > 0 ? '+' : '') + sum.toLocaleString('ko-KR') : 0}원</p>
+          <p css={styles.checkResultTotalContents}>
+            {sum ? (sum > 0 ? "+" : "") + sum.toLocaleString("ko-KR") : 0}원
+          </p>
         </div>
         <div css={styles.line} />
         <div>
-          <div css={styles.subTitleWrap} style={{ paddingLeft: '16px' }}>
-            <div className='titleSm'>내가 받은 {income / 100000}개의 소중한</div>
+          <div css={styles.subTitleWrap} style={{ paddingLeft: "16px" }}>
+            <div className="titleSm">
+              내가 받은 {income / 100000}개의 소중한
+            </div>
             감사 메시지
           </div>
           <ThanksSlider />
@@ -167,12 +180,16 @@ const CheckThanksResult = () => {
         <div css={styles.line} />
         <div css={styles.footerWrap}>
           <div css={styles.subTitleWrap}>
-            <div className='titleSm'>흑토끼와 함께</div>
+            <div className="titleSm">흑토끼와 함께</div>
             HAPPY NEW YEAR!
           </div>
           <div css={styles.borderStyles}>
             <div css={styles.footerContentsWrap}>
-              <img src={totalResultRabbits} css={styles.footerImg} alt='토끼들' />
+              <img
+                src={totalResultRabbits}
+                css={styles.footerImg}
+                alt="토끼들"
+              />
               <p css={styles.footerContents}>
                 2022년 한 해 힘들었던 일도 많았지만 <br />
                 누군가에게 감사하고, 감사 받는 한 해를 보냈어 <br />

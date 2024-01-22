@@ -1,6 +1,5 @@
-/** @jsxImportSource @emotion/react */
-import React from 'react';
-import { css } from '@emotion/react';
+import React from "react";
+import { css } from "@emotion/react";
 
 const Pagination = (props: {
   total: number;
@@ -18,7 +17,7 @@ const Pagination = (props: {
             css={pageBtn}
             key={i + 1}
             onClick={() => props.setPage(i + 1)}
-            aria-current={props.page === i + 1 ? 'page' : undefined}
+            aria-current={props.page === i + 1 ? "page" : undefined}
           />
         ))}
     </nav>
@@ -44,6 +43,7 @@ const pageBtn = css`
   :hover {
     background: #48484a;
   }
+
   :disabled {
     cursor: revert;
     transform: revert;

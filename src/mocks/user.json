@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "username": "보라돌이",
+    "password": "1234"
+  },
+  {
+    "id": 2,
+    "username": "뚜비",
+    "password": "1234"
+  },
+  {
+    "id": 3,
+    "username": "나나",
+    "password": "1234"
+  },
+  {
+    "id": 4,
+    "username": "뽀",
+    "password": "1234"
+  }
+]

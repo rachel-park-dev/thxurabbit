@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react';
 import * as styles from '@/pages/Intro/style';
 import { css } from '@emotion/react';

@@ -1,7 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import React, { useRef, useState } from 'react';
-import { css, SerializedStyles } from '@emotion/react';
-import Button from '@/components/Button';
+import React, { useRef, useState } from "react";
+import { css, SerializedStyles } from "@emotion/react";
+import Button from "@/components/Button";
 
 type SharePopupProps = {
   width: string;
@@ -12,7 +11,13 @@ type SharePopupProps = {
   onCancel?: () => void;
 };
 
-const SharePopup = ({ width, children, onClick, className, onCancel }: SharePopupProps) => {
+const SharePopup = ({
+  width,
+  children,
+  onClick,
+  className,
+  onCancel,
+}: SharePopupProps) => {
   const [clicked, setClicked] = useState(false);
 
   const handleCopyURL = (text: string) => {
@@ -22,7 +27,7 @@ const SharePopup = ({ width, children, onClick, className, onCancel }: SharePopu
         setClicked(true);
       })
       .catch(() => {
-        alert('복사를 다시 시도해주세요.');
+        alert("복사를 다시 시도해주세요.");
       });
   };
 
@@ -37,8 +42,13 @@ const SharePopup = ({ width, children, onClick, className, onCancel }: SharePopu
           </p>
         </div>
         {clicked && <div css={copyComment}>복사되었습니다</div>}
-        <div css={popupButton} className='buttonWrapper'>
-          <Button width={width} color='#111111' onClick={onCancel} className='btnCancel'>
+        <div css={popupButton} className="buttonWrapper">
+          <Button
+            width={width}
+            color="#111111"
+            onClick={onCancel}
+            className="btnCancel"
+          >
             닫기
           </Button>
         </div>

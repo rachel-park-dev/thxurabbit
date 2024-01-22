@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
 import frame from '@/assets/icon/ico_frame.svg';

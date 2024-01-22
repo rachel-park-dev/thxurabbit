@@ -1,7 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import React from 'react';
-import { css } from '@emotion/react';
-import whiteRabbit from '@/assets/icon/ico_white_rabbit.svg';
+import React from "react";
+import { css } from "@emotion/react";
+import whiteRabbit from "@/assets/icon/ico_white_rabbit.svg";
 
 const headerWrap = css`
   display: flex;
