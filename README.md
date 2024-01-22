@@ -37,4 +37,36 @@
 <hr/>
 
 #### 🗂️ 프론트엔드 폴더 구조
-
+```
+.
+├── README.md
+├── db.json
+├── dist
+├── index.html
+├── package.json
+├── public
+│   ├── mockServiceWorker.js
+│   ├── og_blackRabbit.png
+│   ├── rabbit.png
+│   └── vite.svg
+├── src
+│   ├── App.tsx
+│   ├── NotFound
+│   ├── Router.tsx
+│   ├── api
+│   ├── assets
+│   ├── axios
+│   ├── components
+│   ├── contexts
+│   ├── main.tsx
+│   ├── mocks
+│   ├── pages
+│   ├── reset.css
+│   ├── services
+│   ├── utils
+│   └── vite-env.d.ts
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── yarn.lock
+```
