@@ -70,3 +70,4 @@
 ├── vite.config.ts
 └── yarn.lock
 ```
+![archi 002](https://github.com/rachel-park-dev/thxurabbit/assets/88074487/a19ce956-22d5-4213-8458-ca1156ff4e29)
