@@ -32,7 +32,8 @@
 <hr/>
 
 ### 🚩 프로젝트 상세
-![prjarchi 001](https://github.com/rachel-park-dev/thxurabbit/assets/88074487/f9312585-e2a0-4bba-8586-b2257196ff5f)
+![archi 001](https://github.com/rachel-park-dev/thxurabbit/assets/88074487/74107f6c-5d6c-45a4-bafd-00c172205b49)
+
 
 <hr/>
 
